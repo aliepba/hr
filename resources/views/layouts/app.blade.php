@@ -32,5 +32,6 @@
 </div>
 <!-- ./wrapper -->
 @include('includes.scripts')
+@stack('addon-script')
 </body>
 </html>

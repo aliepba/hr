@@ -18,3 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::namespace('HR')
+        ->group(function(){
+            Route::get('/jabatan', 'JabatanController@index')->name('jabatan.index');
+        });
