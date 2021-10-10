@@ -9,8 +9,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Jabatan</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('jabatan.index')}}">Jabatan</a></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -48,6 +48,7 @@
 
     </div>
     <!--/.col (left) -->
+
     <!-- right column -->
     <div class="col-md-6">
       <!-- Form Element sizes -->
