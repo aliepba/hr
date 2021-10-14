@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class JabatanRequest extends FormRequest
+class UpahRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class JabatanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_jabatan' => 'required|max:50'
+            'nama_barang' => "required|max:50",
+            'upah'=> 'required'
         ];
     }
 }
