@@ -111,7 +111,7 @@
                     <div class="form-group">
                         <label for="photo">Photo</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="photo" name="photo">
+                            <input type="file" class="custom-file-input" id="photo" name="photo" required>
                             <label class="custom-file-label" for="customFile">Pilih photo</label>
                           </div>
                           @error('photo')

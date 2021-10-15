@@ -36,7 +36,7 @@
           <div class="card-body">
             <div class="form-group">
               <label for="nama_jabatan">Nama Jabatan</label>
-              <input type="text" class="form-control" id="nama_jabatan" nama="nama_jabatan" value="{{$data->nama_jabatan}}">
+              <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan" value="{{$data->nama_jabatan}}">
             </div>
           </div>
           <!-- /.card-body -->

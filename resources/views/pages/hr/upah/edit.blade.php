@@ -36,7 +36,7 @@
           <div class="card-body">
             <div class="form-group">
               <label for="nama_barang">Nama Barang</label>
-              <input type="text" class="form-control" id="nama_barang" nama="nama_barang" value="{{$data->nama_barang}}">
+              <input type="text" class="form-control" id="nama_barang" name="nama_barang" value="{{$data->nama_barang}}">
             </div>
 
             <div class="form-group">

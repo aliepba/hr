@@ -53,7 +53,14 @@
                   <td>{{$item->nama_jabatan}}</td>
                   <td>{{$item->kontak}}</td>
                   <td>{{$item->alamat}}</td>
-                  <td></td>
+                  <td>
+                    <a href="{{route('pegawai.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                    <form action="{{route('pegawai.destroy', $item->id)}}" method="post" class="d-inline">
+                      @csrf
+                      @method('delete')
+                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                    </form>
+                  </td>
               @endforeach
             </tbody>
             <tfoot>

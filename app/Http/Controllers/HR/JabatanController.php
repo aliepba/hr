@@ -3,20 +3,43 @@
 namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\JabatanRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\JabatanRequest;
 use App\Model\Jabatan;
 
 class JabatanController extends Controller
 {
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $data = Jabatan::paginate(5);
         return view('pages.hr.jabatan.index', [
             'data' => $data
         ]);
     }
 
-    public function store(JabatanRequest $request){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(JabatanRequest $request)
+    {
         $data = $request->all();
         
         Jabatan::create($data);
@@ -24,7 +47,25 @@ class JabatanController extends Controller
         return redirect('/jabatan');
     }
 
-    public function edit($id){
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
         $data = Jabatan::findOrFail($id);
 
         return view('pages.hr.jabatan.edit', [
@@ -32,23 +73,37 @@ class JabatanController extends Controller
         ]);
     }
 
-    public function update(JabatanRequest $request, $id){
-        $item = Jabatan::findOrFail($id);
-        
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
         $data = $request->all();
-
-        $item->update($data);
 
         print_r($data);
 
-        // return redirect('/jabatan');
+        $item = Jabatan::findOrFail($id);
+
+        $item->update($data);
+
+         return redirect('/jabatan');
     }
 
-    public function destroy($id){
-        $data = Jabatan::findOrFail($id);
-        $data->delete();
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $item = Jabatan::findOrFail($id);
+        $item->delete();
 
         return redirect('/jabatan');
     }
-
 }
