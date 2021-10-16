@@ -24,4 +24,5 @@ Route::namespace('HR')
             Route::resource('jabatan', 'JabatanController');
             Route::resource('pegawai', 'PegawaiController');
             Route::resource('upah', 'UpahController');
+            Route::resource('absen', 'AbsenController');
         });

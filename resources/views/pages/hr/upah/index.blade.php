@@ -83,7 +83,7 @@
                     <td>{{$items->nama_barang}}</td>
                     <td>{{$items->upah}}
                     <td>
-                      <a href="{{route('upah.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                      <a href="{{route('upah.edit', $items->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                       <form action="#" method="post" class="d-inline">
                         @csrf
                         @method('delete')
