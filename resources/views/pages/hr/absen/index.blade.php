@@ -10,7 +10,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('jabatan.index')}}">Pegawai</a></li>
+            <li class="breadcrumb-item"><a href="{{route('absen.index')}}">Absen</a></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -47,6 +47,7 @@
             </thead>
             <tbody>
               @foreach ($data as $item)
+              <tr>
                   <td>#</td>
                   <td>{{$item->nama}}</td>
                   <td>{{$item->no_pegawai}}</td>
@@ -63,13 +64,17 @@
                         </td>
                     @endif
                   <td>
-                    <a href="{{route('pegawai.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                    <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#modal-schedule">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                    {{-- <a href="{{route('pegawai.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                     <form action="{{route('pegawai.destroy', $item->id)}}" method="post" class="d-inline">
                       @csrf
                       @method('delete')
                     <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                    </form>
+                    </form> --}}
                   </td>
+              </tr>
               @endforeach
             </tbody>
             <tfoot>
@@ -94,6 +99,42 @@
   </div>
   <!-- /.row -->
 </div>
+
+<div class="modal fade" id="modal-schedule">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Absensi</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="{{route('absen.store')}}" method="POST">
+              @csrf
+              <div class="form-group">
+              <label>Nama Barang</label>
+              <select class="form-control" name="no_pegawai">
+                  <option value="0">Pilih Nama Barang</option>
+                  @foreach ($upah as $upah)
+                  <option value="{{$upah->upah_id}}">{{$upah->nama_barang}}</option>
+                  @endforeach
+              </select>
+              </div>
+              <div class="form-group">
+                <label>Jumlah</label>
+                <input type="number" class="form-control" name="jumlah"/>
+              </div>
+          
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 @endsection
 
 @push('addon-script')
@@ -101,17 +142,17 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Primary Modal</h4>
+          <h4 class="modal-title">Absensi</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="#" method="POST">
+            <form action="{{route('absen.store')}}" method="POST">
                 @csrf
                 <div class="form-group">
                 <label>Nama Pegawai</label>
-                <select class="form-control">
+                <select class="form-control" name="no_pegawai">
                     <option value="0">Pilih Pegawai</option>
                     @foreach ($pegawai as $pgw)
                     <option value="{{$pgw->no_pegawai}}">{{$pgw->nama}}</option>
@@ -130,16 +171,19 @@
                     <label>Jam Keluar</label>
                     <input type="time" class="form-control" name="keluar"/>
                 </div>
-            </form>
+            
         </div>
         <div class="modal-footer justify-content-between">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+      </form>
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 
+
+    
 <script>
   $(function () {
     $("#example1").DataTable({

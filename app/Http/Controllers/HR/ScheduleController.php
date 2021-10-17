@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\HR;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ScheduleRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\AbsenRequest;
-use App\Model\Absen;
-use App\Model\Pegawai;
-use App\Model\Upah;
-use Illuminate\Support\Facades\DB;
+use App\Model\Schedule;
 
-class AbsenController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,21 +16,7 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        $data = DB::table('absen')
-                    ->join('pegawai', 'absen.no_pegawai', '=', 'pegawai.no_pegawai')
-                    ->select('absen.*', 'pegawai.nama')
-                    ->get();
-
-        $pegawai = DB::table('pegawai')->get();
-        $upah = Upah::all();
-
-        // dd($pegawai);
-
-        return view('pages.hr.absen.index', [
-            'data' => $data,
-            'pegawai' => $pegawai,
-            'upah' => $upah
-        ]);
+        //
     }
 
     /**
@@ -52,13 +35,9 @@ class AbsenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AbsenRequest $request)
+    public function store(ScheduleRequest $request)
     {
         $data = $request->all();
-
-        Absen::create($data);
-
-        return redirect('/absen');
     }
 
     /**
