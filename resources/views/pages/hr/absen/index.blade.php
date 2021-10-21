@@ -64,9 +64,13 @@
                         </td>
                     @endif
                   <td>
-                    <button type="button" class="btn btn-primary btn-sm ml-3" data-toggle="modal" data-target="#modal-schedule">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-schedule">
                       <i class="fas fa-plus"></i>
                     </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-detail">
+                      <i class="fas fa-eye"></i>
+                    </button>
+
                     {{-- <a href="{{route('pegawai.edit', $item->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
                     <form action="{{route('pegawai.destroy', $item->id)}}" method="post" class="d-inline">
                       @csrf
@@ -135,6 +139,22 @@
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
+
+  <div class="modal fade" id="modal-detail">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Detail</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          asfsf
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 @endsection
 
 @push('addon-script')
