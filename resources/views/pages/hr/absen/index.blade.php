@@ -64,9 +64,7 @@
                         </td>
                     @endif
                   <td>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-schedule">
-                      <i class="fas fa-plus"></i>
-                    </button>
+                    <a href="javascript:void(0)" onclick="masukanSchedule({{$item->id}})" class="btn btn-info btn-sm rounded"><i class="fas fa-plus"></i></a>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-detail">
                       <i class="fas fa-eye"></i>
                     </button>
@@ -114,11 +112,15 @@
         </button>
       </div>
       <div class="modal-body">
-          <form action="{{route('absen.store')}}" method="POST">
+          <form action="{{route('schedule.store')}}" method="POST">
               @csrf
               <div class="form-group">
+                <label>No Pegawai</label>
+                <input type="text" id="no_pegawai" name="no_pegawai" class="form-control" readonly/>
+              </div>
+              <div class="form-group">
               <label>Nama Barang</label>
-              <select class="form-control" name="no_pegawai">
+              <select class="form-control" name="upah_id">
                   <option value="0">Pilih Nama Barang</option>
                   @foreach ($upah as $upah)
                   <option value="{{$upah->upah_id}}">{{$upah->nama_barang}}</option>
@@ -139,22 +141,6 @@
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
-
-  <div class="modal fade" id="modal-detail">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Detail</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          asfsf
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
 @endsection
 
 @push('addon-script')
@@ -210,5 +196,12 @@
       "responsive": true, "lengthChange": false, "autoWidth": false,
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
+
+  function masukanSchedule(id){
+            $.get('/absen/'+id, function(data){
+                $("#no_pegawai").val(data.no_pegawai);
+                $("#modal-schedule").modal("toggle");
+            })
+        }
 </script>
 @endpush

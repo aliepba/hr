@@ -38,6 +38,10 @@ class ScheduleController extends Controller
     public function store(ScheduleRequest $request)
     {
         $data = $request->all();
+
+        Schedule::create($data);
+
+        return redirect('/absen');
     }
 
     /**

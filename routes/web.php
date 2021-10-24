@@ -25,4 +25,5 @@ Route::namespace('HR')
             Route::resource('pegawai', 'PegawaiController');
             Route::resource('upah', 'UpahController');
             Route::resource('absen', 'AbsenController');
+            Route::resource('schedule', 'ScheduleController');
         });

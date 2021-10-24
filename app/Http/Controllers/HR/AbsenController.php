@@ -22,6 +22,7 @@ class AbsenController extends Controller
         $data = DB::table('absen')
                     ->join('pegawai', 'absen.no_pegawai', '=', 'pegawai.no_pegawai')
                     ->select('absen.*', 'pegawai.nama')
+                    ->orderBy('absen.id', 'desc')
                     ->get();
 
         $pegawai = DB::table('pegawai')->get();
@@ -69,7 +70,9 @@ class AbsenController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Absen::find($id);
+
+        return response()->json($data);
     }
 
     /**
