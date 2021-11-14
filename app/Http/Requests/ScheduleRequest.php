@@ -24,9 +24,11 @@ class ScheduleRequest extends FormRequest
     public function rules()
     {
         return [
+            'id_absen' => 'required',
             'no_pegawai' => 'required',
             'upah_id' => 'required',
-            'jumlah' => 'required'
+            'jumlah' => 'required',
+            'tanggal_hadir' => 'required'
         ];
     }
 }

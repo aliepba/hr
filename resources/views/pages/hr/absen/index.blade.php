@@ -106,30 +106,32 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Absensi</h4>
+        <h4 class="modal-title">Rincian Schedule</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <form action="{{route('schedule.store')}}" method="POST">
+          <form action="{{route('schedule.store')}}" method="POST" id="formSchedule">
               @csrf
               <div class="form-group">
                 <label>No Pegawai</label>
                 <input type="text" id="no_pegawai" name="no_pegawai" class="form-control" readonly/>
+                <input type="date" id="tanggal_hadir" name="tanggal_hadir" class="form-control" hidden />
+                <input type="text" id="id_absen" name="id_absen" class="form-control" hidden/>
               </div>
               <div class="form-group">
               <label>Nama Barang</label>
               <select class="form-control" name="upah_id">
                   <option value="0">Pilih Nama Barang</option>
                   @foreach ($upah as $upah)
-                  <option value="{{$upah->upah_id}}">{{$upah->nama_barang}}</option>
+                  <option value="{{$upah->id}}">{{$upah->nama_barang}}</option>
                   @endforeach
               </select>
               </div>
               <div class="form-group">
                 <label>Jumlah</label>
-                <input type="number" class="form-control" name="jumlah"/>
+                <input type="number" class="form-control" name="jumlah" id="jumlah" />
               </div>
           
       </div>
@@ -200,8 +202,12 @@
   function masukanSchedule(id){
             $.get('/absen/'+id, function(data){
                 $("#no_pegawai").val(data.no_pegawai);
+                $('#id_absen').val(data.id);
+                $('#tanggal_hadir').val(data.tanggal_hadir);
                 $("#modal-schedule").modal("toggle");
             })
         }
+
+
 </script>
 @endpush

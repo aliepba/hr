@@ -15,7 +15,6 @@ class CreatePegawaiTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id();
-            $table->string('npwp')->unique();
             $table->string('no_pegawai')->unique()->nullable();
             $table->string('nama');
             $table->text('alamat');

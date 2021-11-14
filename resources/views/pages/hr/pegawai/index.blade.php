@@ -34,7 +34,6 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>NPWP</th>
               <th>No Pegawai</th>
               <th>Nama</th>
               <th>Kelamin</th>
@@ -47,7 +46,6 @@
             <tbody>
               @foreach ($data as $item)
                   <td>#</td>
-                  <td>{{$item->npwp}}</td>
                   <td>{{$item->no_pegawai}}</td>
                   <td>{{$item->nama}}</td>
                   <td>{{$item->kelamin}}</td>
@@ -67,7 +65,6 @@
             <tfoot>
             <tr>
               <th>No</th>
-              <th>NPWP</th>
               <th>No Pegawai</th>
               <th>Nama</th>
               <th>Kelamin</th>

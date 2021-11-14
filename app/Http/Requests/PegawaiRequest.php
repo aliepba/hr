@@ -24,7 +24,6 @@ class PegawaiRequest extends FormRequest
     public function rules()
     {
         return [
-            'npwp' => 'required|unique:pegawai,npwp',
             'no_pegawai' => 'unique:pegawai, no_pegawai',
             'nama' => 'required|max:100',
             'alamat' => 'required',

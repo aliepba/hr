@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ScheduleRequest;
 use Illuminate\Http\Request;
 use App\Model\Schedule;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -16,7 +17,17 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('schedule')
+                    ->join('pegawai', 'schedule.no_pegawai', '=', 'pegawai.no_pegawai')
+                    ->join('upah' , 'schedule.upah_id', '=', 'upah.id')
+                    ->select('schedule.*', 'pegawai.nama', 'upah.nama_barang')
+                    ->get();
+
+            // dd($data);
+
+        return view('pages.hr.schedule.index', [
+            'data' => $data
+        ]);
     }
 
     /**

@@ -84,7 +84,7 @@
                     <td>{{$items->upah}}
                     <td>
                       <a href="{{route('upah.edit', $items->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
-                      <form action="#" method="post" class="d-inline">
+                      <form action="{{route('upah.destroy', $items->id)}}" method="post" class="d-inline">
                         @csrf
                         @method('delete')
                       <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>

@@ -12,6 +12,6 @@ class Schedule extends Model
     protected $table = 'schedule';
 
     protected $fillable = [
-        'no_pegawai', 'upah_id', 'jumlah'
+       'id_absen', 'no_pegawai', 'upah_id', 'jumlah', 'tanggal_hadir'
     ];
 }

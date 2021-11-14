@@ -37,15 +37,6 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="npwp">NPWP</label>
-                        <input type="text" class="form-control" id="npwp" name="npwp" placeholder="NPWP" value="{{$data->npwp}}" required>
-                        @error('npwp')
-                        <span class="invalid-feedback" role="alert">
-                          <strong>{{ $message }}</strong>
-                        </span>
-                      @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="nama">Nama Lengkap</label>
                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" value="{{$data->nama}}" required>
                         @error('nama')

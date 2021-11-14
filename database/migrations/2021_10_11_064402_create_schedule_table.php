@@ -15,8 +15,10 @@ class CreateScheduleTable extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_absen');
             $table->string('no_pegawai');
             $table->integer('upah_id');
+            $table->date('tanggal_hadir');
             $table->integer('jumlah');
             $table->softDeletes();
             $table->timestamps();
